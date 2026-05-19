@@ -16,6 +16,7 @@ export interface Job {
   countries: string[]
   department: string
   url: string
+  logo?: string
 }
 
 export const jobs: Job[] = [

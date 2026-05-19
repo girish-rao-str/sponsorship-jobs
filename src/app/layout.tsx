@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SponsorshipJobs - Visa Sponsorship Jobs in AI Security & Cybersecurity",
-  description: "Find jobs offering visa sponsorship in AI Security, Cybersecurity, Cloud Security, and AI Governance across Gulf, Europe, and Middle East.",
+  title: "SponsorshipJobs - Visa Sponsorship Jobs Worldwide",
+  description: "Find jobs offering visa sponsorship in AI Security, Cybersecurity, Cloud Security, and AI Governance across the globe.",
 };
 
 export default function RootLayout({

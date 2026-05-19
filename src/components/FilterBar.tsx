@@ -27,47 +27,31 @@ export default function FilterBar({
   onDepartmentChange,
   onExperienceChange,
 }: FilterBarProps) {
+  const filters = [
+    { label: 'Country', value: selectedCountry, options: countries, onChange: onCountryChange },
+    { label: 'Work Type', value: selectedWorkType, options: workTypes, onChange: onWorkTypeChange },
+    { label: 'Department', value: selectedDepartment, options: departments, onChange: onDepartmentChange },
+    { label: 'Experience', value: selectedExperience, options: experienceLevels, onChange: onExperienceChange },
+  ]
+
   return (
-    <div className="mt-4 flex flex-wrap gap-3">
-      <select
-        value={selectedCountry}
-        onChange={(e) => onCountryChange(e.target.value)}
-        className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        {countries.map((c) => (
-          <option key={c} value={c}>{c}</option>
-        ))}
-      </select>
-
-      <select
-        value={selectedWorkType}
-        onChange={(e) => onWorkTypeChange(e.target.value)}
-        className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        {workTypes.map((w) => (
-          <option key={w} value={w}>{w}</option>
-        ))}
-      </select>
-
-      <select
-        value={selectedDepartment}
-        onChange={(e) => onDepartmentChange(e.target.value)}
-        className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        {departments.map((d) => (
-          <option key={d} value={d}>{d}</option>
-        ))}
-      </select>
-
-      <select
-        value={selectedExperience}
-        onChange={(e) => onExperienceChange(e.target.value)}
-        className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        {experienceLevels.map((e) => (
-          <option key={e} value={e}>{e}</option>
-        ))}
-      </select>
+    <div className="flex flex-wrap gap-3">
+      {filters.map((filter) => (
+        <div key={filter.label} className="relative">
+          <select
+            value={filter.value}
+            onChange={(e) => filter.onChange(e.target.value)}
+            className="appearance-none bg-slate-800/50 border border-slate-700/50 rounded-xl pl-4 pr-10 py-2.5 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition cursor-pointer hover:border-slate-600"
+          >
+            {filter.options.map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
+          <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      ))}
     </div>
   )
 }
